@@ -96,4 +96,23 @@
 | **메서드 형태**  | 단순히 인스턴스를 반환하는 `static final` 필드                 | 인스턴스를 반환하는 `static` 메서드            |
 | **동기화**     | 기본적으로 스레드 안전                                     | 동기화 처리가 필요할 수 있음                   |
 
-### 4. 
+정리
+
+
+
+### 4. 구현방식[3] : 열거타입 선언
+
+앞서 방식들보다 더 간결하고, 추가노력 없이 직렬화 할 수 있는 방법이다.
+
+- 직렬화 상황이나 리플렉션 공격에서도 제 2의 인스턴스가 생기는 일을 막는다.
+- 원소가 하나뿐인 열거 타입이 싱글턴을 만드는 가장 좋은 방법이다.
+
+  ```java
+    public enum Elvis {
+        INSTANCE;
+      
+        public void leaveTheBuilding() {
+            System.out.println("Elvis is leaving the building!");
+        }
+    }
+  ```
